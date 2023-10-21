@@ -20,7 +20,7 @@ BOT_STICKER_URL="https://api.telegram.org/bot${TOKEN}/sendSticker"
 # Build Machine details
 cores=$(nproc --all)
 os=$(cat /etc/issue)
-time=$(TZ="Asia/Kolkata" date "+%a %b %d %r")
+time=$(TZ="Asia/Jakarta" date "+%a %b %d %r")
 
 # send saxx msgs to tg
 tg_post_msg() {
@@ -48,7 +48,7 @@ tg_post_build()
 # send a nice sticker ro act as a sperator between builds
 tg_post_sticker() {
   curl -s -X POST "$BOT_STICKER_URL" -d chat_id="$CHATID" \\
-    -d sticker="CAACAgUAAxkBAAECHIJgXlYR8K8bYvyYIpHaFTJXYULy4QACtgIAAs328FYI4H9L7GpWgR4E"
+    -d sticker=""
 }
 
 kernel_dir="${PWD}"
@@ -66,7 +66,7 @@ CLANG_DIR=$TC_DIR/clang-r498229b
 export CONFIG_FILE="vendor/violet-perf_defconfig"
 export ARCH="arm64"
 export KBUILD_BUILD_HOST=SuperiorOS
-export KBUILD_BUILD_USER=Joker-V2
+export KBUILD_BUILD_USER=Reza
 export PATH="$CLANG_DIR/bin:$PATH"
 
 # Sync submodule
@@ -120,7 +120,7 @@ completion() {
   COMPILED_DTBO=arch/arm64/boot/dtbo.img
   if [[ -f ${COMPILED_IMAGE} && ${COMPILED_DTBO} ]]; then
 
-    git clone -q https://github.com/Joker-V2/AnyKernel3 -b fourteen $anykernel
+    git clone -q https://github.com/rezaadi0105/AnyKernel3 -b master $anykernel
 
     mv -f $ZIMAGE ${COMPILED_DTBO} $anykernel
 
